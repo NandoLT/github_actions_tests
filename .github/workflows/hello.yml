@@ -10,4 +10,4 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - name: Echo de tu message
-        run: "Hola Nando"
+        run: echo "Hola Nando"
