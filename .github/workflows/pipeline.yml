@@ -21,12 +21,10 @@ jobs:
         run: npm run build 
       - name: Test
         run: npm run test
-      - name: Deploy to GitHub Pages
-        if: success()
-        uses: crazy-max/ghaction-github-pages@v2
-        with:
-          target_branch: gh-pages
-          build_dir: build
+      - name: Deploy with gh-pages
+        run: |
+          git remote set-url origin https://git:${EXAMPLE_SECRET}@github.com/${GITHUB_REPOSITORY}.git
+          npx gh-pages -d build -u "github-actions-bot <support+actions@github.com>"
         env:
           GITHUB_TOKEN: ${{ secrets.EXAMPLE_SECRET }}
       
