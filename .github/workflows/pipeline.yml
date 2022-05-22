@@ -20,7 +20,11 @@ jobs:
       - name: Test
         run: npm run test
       - name: Build and deploy gh-pages
-        run: npm run build 
+        run: |
+          git config --global user.name "NandoLT"
+          git config --global user.email "fernando_lt@hotmail.es"
+          git remote set-url origin  https://x-acces-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          npm run deploy
         
 
       
