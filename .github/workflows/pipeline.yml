@@ -15,19 +15,12 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - name: Git User Config
-        run: |
-          git config --global user.email "fernando_lt@hotmail.es"
-          git config --global user.name "NandoLT"
       - name: Install Dependencies
         run: npm ci
-      - name: Build
-        run: npm run build 
       - name: Test
         run: npm run test
-      - name: Deploy with gh-pages
-        run: |
-          git remote set-url origin https://git:${{ secrets.EXAMPLE_SECRET }}@github.com/NandoLT/github_actions_tests.git
-          npx gh-pages -d build -u "github-actions-bot <support+actions@github.com>"
+      - name: Build and deploy gh-pages
+        run: npm run build 
+        
 
       
